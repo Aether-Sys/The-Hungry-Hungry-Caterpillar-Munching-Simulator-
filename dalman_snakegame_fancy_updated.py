@@ -5,6 +5,10 @@
     Hungry Hungry Caterpillar head image credit: teacherspayteachers.com.
     Apple gif image credit: fity.club."""
 
+"""Notice: PIL module needed for graphics to display.
+Just type "pip install Pillow" directly in command prompt."""
+
+from PIL import Image
 import time
 import turtle
 from random import randint
@@ -32,15 +36,16 @@ class Snake:
         """Init Snake class.
         
         Establish attributes of Snake class.
-        Also define image and register it as turtle shape.
+        Also open head image as PIL.Image object.
+        Register it as turtle shape.
         Then, apply image as shape to head."""
         
         self.segments = []
         self.create_snake()
         self.head = self.segments[0]
-        image = "caterpillar head.gif.gif"
-        turtle.register_shape(image)
-        self.head.shape(image)
+        image = Image.open("./Images/caterpillar head.gif.gif")
+        turtle.register_shape("./Images/caterpillar head.gif.gif")
+        self.head.shape("./Images/caterpillar head.gif.gif")
 
     def create_snake(self):
         """Create segment at each starting coordinate by calling add_segment()."""
@@ -103,6 +108,11 @@ class Snake:
 
 class Food(turtle.Turtle):
     """A class representing food/apple items the snake eats.
+
+    Establish attributes of Food class.
+    Also open apple image as PIL.Image object.
+    Register it as turtle shape.
+    Then, apply image as shape to head.
     
     Attributes:
         super().__init__() (method): Inherit Turtle class methods and attributes.
@@ -117,9 +127,9 @@ class Food(turtle.Turtle):
     def __init__(self):
         """Init Food class."""
         super().__init__()
-        image = "Red-apple-jumping.gif"
-        turtle.register_shape(image)
-        self.shape(image)
+        image = Image.open("./Images/Red-apple-jumping.gif")
+        turtle.register_shape("./Images/Red-apple-jumping.gif")
+        self.shape("./Images/Red-apple-jumping.gif")
         self.penup()
         self.shapesize(stretch_len = 0.5, stretch_wid = 0.5)
         self.speed("fastest")
